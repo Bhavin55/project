@@ -1,0 +1,35 @@
+<table>
+<table border='1'>
+	<tr>
+	<th colspan="6"><h1>Vehicle List</h1></th></tr>
+	<th>User name:</th>
+	<th>Type</th>
+	<th>Model</th>
+	<th>Image</th>
+	<th>File</th>
+	<th>Option</th>
+
+	
+	
+	</tr>
+	<!--{% for x in student %}-->
+<!--{% endfor %}-->
+	
+	{% for x in object_list %}
+		<tr>
+		<td>{{x.user}}</td>
+		<td>{{x.Ve_type}}</td>
+		<td>{{x.Ve_model}}</td>
+		<td><img src="{{x.Ve_photo.url}}" height="100px" width="100px"></td>
+		<td>{{x.Ve_file}}</td>
+		
+		<td><a href="{% url 'admindelete' x.id %}"><button type="button">Delete</button></td>
+		
+	
+		</tr>
+	{% endfor %}
+	
+
+</table>
+
+

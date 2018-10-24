@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+
+	RENT ALL
+  </title>
+
+  <title>Bootstrap Example</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+
+    </script>
+    <style type="text/css">
+     
+      #image
+      { margin:20px;
+        border:5px ;
+        height:570px;
+        width:1720px;
+      }
+
+      #div1
+      {
+        margin:20px;
+        border:5px ;
+        height:270px;
+        width:1720px;
+        background-color:#ffffcc;
+      }
+
+       body
+
+            {  
+            background-repeat: no-repeat;
+            background-size:cover;
+            }
+
+     
+
+    </style>
+</head>
+	
+<body>
+
+
+{%load static %}
+<div class="container">
+<table class="table table-hover">
+
+	{% for x in object_list %}
+		
+		<tr>
+		<td>{{x.user}}</td>
+		<td>{{x.Ve_type}}</td>
+		<td>{{x.Ve_model}}</td>
+		<td><img src="{{x.Ve_photo.url}}" height="100px" width="100px"></td>
+		<td>{{x.Ve_file}}</td>
+		
+		<td><a href="{% url 'admindelete' x.id %}"><button type="button">update</button></td>
+		
+	
+		</tr>
+	
+	
+	{% endfor %}
+</table>
+</div>
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+  <style type="text/css">
+          body
+            {  
+               background:url(http://s1.1zoom.net/big0/669/Mercedes-Benz_Maybach_Vision_6_Front_Wine_color_528959_1280x675.jpg);
+            background-repeat: no-repeat;
+            background-size:cover;
+            }
+          .login
+            {
+              
+              background-color: #f2f2f2;
+                float: left;
+                min-height: 100px;
+                width: 360px;
+                position: relative;
+                left: 650px;
+                top: 50px;
+            }
+    </style>
+
+</head>
+<body>
+  <!--<div align="right"><a href="/register"><button type="submit">signup</button></a></div> -->
+  
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/first">WebSiteName</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+
+<div class="login"><br>
+{% block content %}
+  <h2><center>Login</center></h2>
+  <form method="post" onsubmit="return get_action();" >
+  <center>
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+         <div class="g-recaptcha" data-sitekey="6LfMI3UUAAAAAOGobdQdfOVDV0LklKxghB-n_Ky-" data-callback="verifyCaptcha"></div>
+  <div id="g-recaptcha-error"></div>
+      </center>
+    <br>
+    <center><button type="submit">Login</button>
+      <a href="/password_reset"><button>reset password</button></a>
+      
+    
+   
+  </form>
+  <br>
+  <p><strong>-- OR --</strong></p>
+  <a href="{% url 'social:begin' 'github' %}"><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" height="42" width="42"></a><br>
+  <br>
+  <a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a>
+
+    
+  </center>
+
+{% endblock %}
+
+</div>
+
+</body>
+</html>
+
+<script>
+function get_action(form)
+{
+    var v = grecaptcha.getResponse();
+    if(v.length == 0)
+    {
+        document.getElementById('g-recaptcha-error').innerHTML="You can't leave Captcha Code empty";
+        return false;
+    }
+    else
+    {
+        document.getElementById('g-recaptcha-error').innerHTML="Captcha completed";
+        return true;
+    }
+}
+function verifyCaptcha(){
+    document.getElementById('g-recaptcha-error').innerHTML = '';
+}
+</script>

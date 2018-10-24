@@ -1,0 +1,8 @@
+<body>
+	<form method='post' action='.'>
+	{% csrf_token %}
+	{{ form.as_p}}
+	<button>update</button></form>
+<a href="% url 'vehiledelete' user.id  %"><button>delete</button></a>
+	
+	
